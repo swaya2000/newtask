@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <title>webpage</title>
+
+    <style>
+          /* Custom navbar styling */
+          .custom-navbar {
+            background: linear-gradient(135deg, #1d2671, #c33764); /* Gradient from dark blue to deep purple */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Slight shadow for a modern effect */
+            padding: 10px 20px;
+        }
+      
+        .custom-navbar .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #f0f0f0; /* Light gray for better contrast */
+            transition: color 0.3s ease;
+        }
+      
+        .custom-navbar .navbar-brand:hover {
+            color: #ffcc29; /* Golden yellow on hover */
+        }
+      
+        .custom-navbar .navbar-title {
+            font-style: italic;
+            margin-left: 0.5rem;
+        }
+      
+        .custom-navbar .nav-link {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #e0e0e0; /* Light color for better readability */
+            transition: color 0.3s ease;
+        }
+      
+        .custom-navbar .nav-link:hover {
+            color: #ffcc29; /* Yellow color on hover for emphasis */
+        }
+      
+        .custom-navbar .nav-link.active {
+            color: #ffcc29; /* Bright yellow for the active link */
+            font-weight: bold;
+        }
+      
+        .custom-navbar .nav-link .nav-text {
+            margin-left: 0.5rem;
+        }
+      
+        .custom-navbar .navbar-toggler {
+            border-color: #ffcc29; /* Matching the gold theme */
+        }
+      
+        .custom-navbar .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ffcc29' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba(255, 204, 41, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+        }
+      
+        /* Dropdown menu styling */
+        .custom-navbar .dropdown-menu {
+            background-color: #333; /* Dark gray background */
+            border: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for elegance */
+        }
+      
+        .custom-navbar .dropdown-item {
+            color: #e0e0e0; /* Light color for dropdown items */
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+      
+        .custom-navbar .dropdown-item:hover {
+            background-color: #ffcc29; /* Gold background on hover */
+            color: #000; /* Black text on hover for contrast */
+        }
+  
+        .logo-text {
+              font-size: 32px;
+              font-weight: bold;
+          }
+  
+          .pro {
+              color: #0053ff; /* Blue color for "PRO" */
+          }
+  
+          .element {
+              background: linear-gradient(135deg, #4c5dff, #ff6ab9); /* Gradient for "ELEMENT" */
+              -webkit-background-clip: text;
+              background-clip: text;
+              color: transparent;
+          }
+
+
+          .custom-carousel {
+        width: 100%;
+        /* margin: 50px auto; */
+        /* border-radius: 15px; */
+        overflow: hidden;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow for depth */
+    }
+  
+    .custom-carousel .carousel-item img {
+        height: 500px;
+        object-fit: cover;
+        filter: brightness(0.75); /* Darken the image slightly for better caption visibility */
+        transition: transform 0.5s ease; /* Smooth zoom effect */
+    }
+  
+    .custom-carousel .carousel-item:hover img {
+        transform: scale(1.05); /* Zoom effect on hover for better interaction */
+    }
+  
+    .custom-caption {
+        /* background: rgba(0, 0, 0, 0.6); Semi-transparent background for caption */
+        /* padding: 15px 30px; */
+        /* border-radius: 10px; */
+        padding-bottom: 150px;
+        animation: fadeInUp 1s ease; /* Smooth entrance animation */
+    }
+  
+    .custom-caption h1 {
+        font-size: 1.8rem;
+        /* font-weight: bold; */
+        color: #ffc107; /* Bright gold color for the heading */
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); /* Slight shadow for text clarity */
+    }
+  
+    .custom-caption p {
+        color: #f0f0f0; /* Light color for better readability */
+        font-size: 1.1rem;
+    }
+  
+    /* Carousel controls styling */
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-color: rgba(0, 0, 0, 0.6); /* Dark background for control icons */
+        border-radius: 50%; /* Circular icons */
+        padding: 15px;
+    }
+  
+    .carousel-control-prev-icon:hover,
+    .carousel-control-next-icon:hover {
+        background-color: #ffc107; /* Gold color on hover */
+        transform: scale(1.2); /* Slightly larger on hover for emphasis */
+    }
+  
+    /* Keyframe animation for caption */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    </style>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <div class="logo-text">
+                      <img src="logo2.png" alt="">
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="">
+                            <i class="fas fa-house-user"></i> <span class="nav-text">Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="fas fa-user-plus"></i> <span class="nav-text">ABOUT US</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="fas fa-sign-in-alt"></i> <span class="nav-text">WORK</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-sign-out-alt"></i> <span class="nav-text">BLOG</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" >
+                            <i class="fas fa-ellipsis-h"></i> <span class="nav-text">CONTACT US</span>
+                        </a>         
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="railwayCarousel" class="carousel slide custom-carousel" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="k5.jpg" class="d-block w-100" alt="Train Image 1" style="height: 500px;">
+                <div class="carousel-caption custom-caption">
+                    <h1><b>PRO ELEMENT CREATIVES</b></h1>
+                    <h3><b>Website Development And Graphic Design Company</b></h3>
+                    <p>We are one of the leading advertising agency and design space with a bunch of creative and passionate team born in 2015. We are a combo of old and new, real and virtual, large and small, unique and extraordinary. We strongly believe in quality more than quantity. We create or recreate a fresh and attractive identity for your product, services, and brands for the right audience.</p>  
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="k8.jpg" class="d-block w-100" alt="Train Image 2" style="height: 500px;">
+                <div class="carousel-caption custom-caption">
+                    <h1><b>PRO ELEMENT CREATIVES</b></h1>
+                    <h3><b>Website Development And Graphic Design Company</b></h3>
+                    <p>We are one of the leading advertising agency and design space with a bunch of creative and passionate team born in 2015. We are a combo of old and new, real and virtual, large and small, unique and extraordinary. We strongly believe in quality more than quantity. We create or recreate a fresh and attractive identity for your product, services, and brands for the right audience. We are the one who is an unlimited and wide variety in the types of companies that may be big or small. WE are the one who with 100+ satisfied clients across worldwide.</p>
+                   
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="k7.jpg" class="d-block w-100" alt="Train Image 3" style="height: 500px;">
+                <div class="carousel-caption custom-caption">
+                    <h1><b>PRO ELEMENT CREATIVES</b></h1>
+                    <h3><b>Website Development And Graphic Design Company</b></h3>
+                    <p>We are one of the leading advertising agency and design space with a bunch of creative and passionate team born in 2015. We are a combo of old and new, real and virtual, large and small, unique and extraordinary. We strongly believe in quality more than quantity. We create or recreate a fresh and attractive identity for your product, services, and brands for the right audience.</p>
+                
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#railwayCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#railwayCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div><br>
+
+    <h2 style="text-align: center; color: #333; margin-bottom: 10px;"><b>The Difference We Bring</b></h2>
+    <p style="text-align: center; color: #666; font-size: 16px; margin-bottom: 40px;">
+        We create or recreate a fresh and attractive identity for your product, services, and brands for the right audience. 
+        We are the one who is an unlimited and wide variety in the types of companies that may be big or small. 
+        We are the one with 100+ satisfied clients across worldwide.
+    </p>
+
+    <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+
+        <!-- High Quality Section -->
+        <div style="background-color: #ff6666; padding: 20px; border-radius: 50px; width: 220px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); position: relative; margin-bottom: 20px;">
+            <h2 style="color: #fff; text-align: center;">High Quality</h2>
+            <p style="color: #fff; font-size: 14px; text-align: center;">
+                Providing all services with a rich quality. Offering best-qualified services, and always behave positively and professionally.
+            </p>
+            <div style="width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-top: 20px solid #ff6666; position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);"></div>
+        </div>
+
+        <!-- Progressive Section -->
+        <div style="background-color: #ff66b2; padding: 20px; border-radius: 50px; width: 220px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); position: relative; margin-bottom: 20px;">
+            <h2 style="color: #fff; text-align: center;">Progressive</h2>
+            <p style="color: #fff; font-size: 14px; text-align: center;">
+                Our company is progressive in all ways. This quality will reflect in all the services that are provided by us.
+            </p>
+            <div style="width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-top: 20px solid #ff66b2; position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);"></div>
+        </div>
+
+        <!-- Affordable Section -->
+        <div style="background-color: #66cc66; padding: 20px; border-radius: 50px; width: 220px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); position: relative; margin-bottom: 20px;">
+            <h2 style="color: #fff; text-align: center;">Affordable</h2>
+            <p style="color: #fff; font-size: 14px; text-align: center;">
+                Our services are affordable to all. Everything is done with its uniqueness while keeping it affordable.
+            </p>
+            <div style="width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-top: 20px solid #66cc66; position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);"></div>
+        </div>
+
+        <!-- Strive for Excellence Section -->
+        <div style="background-color: #6699ff; padding: 20px; border-radius: 50px; width: 220px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); position: relative; margin-bottom: 20px;">
+            <h2 style="color: #fff; text-align: center;">Strive For Excellence</h2>
+            <p style="color: #fff; font-size: 14px; text-align: center;">
+                Always we strive for excellence through that we are providing a good service for everyone perfectly and excellently.
+            </p>
+            <div style="width: 0; height: 0; border-left: 20px solid transparent; border-right: 20px solid transparent; border-top: 20px solid #6699ff; position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);"></div>
+        </div>
+    </div>
+
+
+
+    <div style="display: flex; justify-content: space-around; flex-wrap: nowrap;">
+
+        <!-- Timeline Section -->
+        <div style="background-color: #ff66b2; padding: 20px; border-radius: 50px; width: 220px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); margin-right: 20px;">
+            <h2 style="color: #fff; text-align: center;">Timeline</h2>
+            <p style="color: #fff; font-size: 14px; text-align: center;">
+                All services are done excellently with the stated time and their quality is also taken care of. Every service is completed on time.
+            </p>
+        </div>
+
+        <!-- Dedication Section -->
+        <div style="background-color: #ffcc66; padding: 20px; border-radius: 50px; width: 220px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); margin-right: 20px;">
+            <h2 style="color: #fff; text-align: center;">Dedication</h2>
+            <p style="color: #fff; font-size: 14px; text-align: center;">
+                All our services are done with more dedication. You can see the dedication we show through the quality and richness of each service.
+            </p>
+        </div>
+
+        <!-- Honesty Section -->
+        <div style="background-color: #ff6666; padding: 20px; border-radius: 50px; width: 220px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); margin-right: 20px;">
+            <h2 style="color: #fff; text-align: center;">Honesty</h2>
+            <p style="color: #fff; font-size: 14px; text-align: center;">
+                Honest is our success, we are honest in every work. We make the best of every service we give. Honesty is the main thing that makes our service-rich one.
+            </p>
+        </div>
+
+        <!-- Customer Satisfaction Section -->
+        <div style="background-color: #66cc66; padding: 20px; border-radius: 50px; width: 220px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);">
+            <h2 style="color: #fff; text-align: center;">Customer Satisfaction</h2>
+            <p style="color: #fff; font-size: 14px; text-align: center;">
+                Every service we do our best to give complete satisfaction to the customers. Our goal is to satisfy the customers in every way.
+            </p>
+        </div>
+
+    </div><br>
+    
+
+
+<!-- grid -->
+ <div>
+    <!-- background-color: rgba(30, 29, 29, 0.45); -->
+    <!-- background-color: #000; -->
+
+  <!-- Top Banner Section -->
+  <div style="background-image: url('k7.jpg'); background-size: cover; background-position: center; height: 200px; position: relative;">
+    <div style="background-color: rgba(30, 29, 29, 0.45); color: #fff; width: 100%; position: absolute; bottom: 20px; padding: 20px; text-align: center;">
+        <h1 style="margin: 0; font-size: 28px;">PROFESSIONAL BUSINESS & FINANCIAL GUIDANCE</h1>
+        <p style="font-size: 16px; margin-top: 10px;">We master the art of web technologies to create stunning designs and seamless user experiences.</p>
+    </div>
+</div>
+
+<!-- Grid Section -->
+<div style="display: flex; flex-wrap: wrap; padding: 20px; background-color: #7b79796a;">
+    <!-- First Box -->
+    <div style="background-color: #D32F2F; color: #fff; width: 48%; margin: 1%; height: 200px; justify-content: center; align-items: center;">
+        <h3 style="text-align: center;">
+            <img src="https://img.icons8.com/ios-filled/64/000000/idea.png" alt="Branding Icon" style="margin-bottom: 15px;">
+            <br>Graphic Designing</h3>
+            <h5 style="text-align: center">It is the art and practice of planning and projecting ideas and experiences...</h5>
+    </div>
+
+    <!-- Second Box -->
+    <div style="background-color: #1976D2; color: #fff; width: 48%; margin: 1%; height: 200px; justify-content: center; align-items: center;">
+        <h3 style="text-align: center;">
+            <img src="https://img.icons8.com/ios-filled/64/000000/facebook-like.png" alt="Social Media Icon" style="margin-bottom: 15px;"> 
+            <br>Social Media Promotion</h3>
+            <h5 style="text-align: center">
+                We boost your business presence on social media platforms through targeted promotions.
+            </h5>
+    </div>
+
+    <!-- Third Box -->
+    <div style="background-color: #FFA000; color: #fff; width: 48%; margin: 1%; height: 200px; justify-content: center; align-items: center;">
+        <h3 style="text-align: center;">
+            <img src="https://img.icons8.com/ios-filled/64/000000/code.png" alt="Web Development Icon" style="margin-bottom: 15px;">
+           <br> Web Development</h3>    
+            <h5 style="text-align: center">
+                We design websites that deliver a strong impact and maximize your business potential.
+            </h5>
+    </div>
+
+    <!-- Fourth Box -->
+    <div style="background-color: #00897B; color: #fff; width: 48%; margin: 1%; height: 200px; justify-content: center; align-items: center;">
+        <!-- <img src="https://img.icons8.com/ios-filled/64/000000/idea.png" alt="Branding Icon" style="margin-bottom: 15px;"> -->
+        <h3 style="text-align: center;">
+            <img src="https://img.icons8.com/ios-filled/64/000000/idea.png" alt="Branding Icon" style="margin-bottom: 15px;">
+           <br> Branding
+         </h3>
+        <h5 style="text-align: center">
+            We excel in branding and rebranding products and services with innovative strategies.
+        </h5>
+    </div>
+
+   
+</div>
+
+
+<!-- images -->
+
+ <!-- Container for Images -->
+    <div style="display: flex; gap: 5px;">
+
+        <!-- Image 1 with Hover Effect -->
+        <div style="position: relative; width: 403px; height: 300px;">
+            <img src="photo7.jpg" alt="Sample Image 1" style="width: 100%; height: 100%; border-radius: 10px; box-shadow: 0px 8px 15px rgba(0,0,0,0.3); transition: transform 0.3s;">
+            <div style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; padding: 10px; border-radius: 5px;">
+                <h6>EurostudysWebsite</h6>
+            </div>
+        </div>
+
+        <!-- Image 2 with Hover Effect -->
+        <div style="position: relative; width: 403px; height: 300px;">
+            <img src="photo10.jpg" alt="Sample Image 2" style="width: 100%; height: 100%; border-radius: 10px; box-shadow: 0px 8px 15px rgba(0,0,0,0.3); transition: transform 0.3s;">
+            <div style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; padding: 10px; border-radius: 5px;">
+                <h6>Social Media Promotions</h6>
+            </div>
+        </div>
+
+        <!-- Image 3 with Hover Effect -->
+        <div style="position: relative; width: 404px; height: 300px;">
+            <img src="photo8.jpg" alt="Sample Image 3" style="width: 100%; height: 100%; border-radius: 10px; box-shadow: 0px 8px 15px rgba(0,0,0,0.3); transition: transform 0.3s;">
+            <div style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; padding: 10px; border-radius: 5px;">
+                <p>Branding</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hover Effect Script -->
+    <script>
+        const images = document.querySelectorAll('div[style*="position: relative"]');
+        images.forEach(image => {
+            image.addEventListener('mouseover', () => {
+                const popup = image.querySelector('div');
+                popup.style.display = 'block';
+                image.querySelector('img').style.transform = 'scale(1.1)';
+            });
+            image.addEventListener('mouseout', () => {
+                const popup = image.querySelector('div');
+                popup.style.display = 'none';
+                image.querySelector('img').style.transform = 'scale(1)';
+            });
+        });
+    </script>
+
+
+<!-- industry -->
+
+<div class="row" style="background: linear-gradient(90deg, #0058ae, #cb0081);  padding: 20px; margin: 0;">
+    <center>
+        <h1 style="color: white; margin-bottom: 30px;">Industry Expertise</h1>
+    </center>
+    <div class="col-4" style="margin-bottom: 30px;">
+        <div class="card" style="border: none; border-radius: 10px; overflow: hidden;">
+            <div class="card-body" style="background-color: #3b7eae; height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                <img src="healthcare.png" alt="" style="width: 60px; height: 60px; margin-bottom: 10px;">
+                <h4 style="color: white; font-weight: bold;">Healthcare</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-4" style="margin-bottom: 30px;">
+        <div class="card" style="border: none; border-radius: 10px; overflow: hidden;">
+            <div class="card-body" style="background-color: #3b7eae; height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                <img src="retail.png" alt="" style="width: 60px; height: 60px; margin-bottom: 10px;">
+                <h4 style="color: white; font-weight: bold;">Retail</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-4" style="margin-bottom: 30px;">
+        <div class="card" style="border: none; border-radius: 10px; overflow: hidden;">
+            <div class="card-body" style="background-color: #3b7eae; height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                <img src="marketing.png" alt="" style="width: 60px; height: 60px; margin-bottom: 10px;">
+                <h4 style="color: white; font-weight: bold;">Marketing & Advertising</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="background: linear-gradient(90deg, #0058ae, #cb0081);  padding: 20px; margin: 0;">
+    <div class="col-4" style="margin-bottom: 30px;">
+        <div class="card" style="border: none; border-radius: 10px; overflow: hidden;">
+            <div class="card-body" style="background-color: #3b7eae; height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                <img src="manifa.png" alt="" style="width: 60px; height: 60px; margin-bottom: 10px;">
+                <h4 style="color: white; font-weight: bold;">Manufacturing</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-4" style="margin-bottom: 30px;">
+        <div class="card" style="border: none; border-radius: 10px; overflow: hidden;">
+            <div class="card-body" style="background-color: #3b7eae; height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                <img src="longis.png" alt="" style="width: 60px; height: 60px; margin-bottom: 10px;">
+                <h4 style="color: white; font-weight: bold;">Logistics & Transportation</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-4" style="margin-bottom: 30px;">
+        <div class="card" style="border: none; border-radius: 10px; overflow: hidden;">
+            <div class="card-body" style="background-color: #3b7eae; height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+                <img src="tele.png" alt="" style="width: 60px; height: 60px; margin-bottom: 10px;">
+                <h4 style="color: white; font-weight: bold;">Telecommunication</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- contact -->
+
+<div style="background: linear-gradient(90deg, #0058ae, #cb0081); color: white; width: 100%; height: 370px;">
+    
+    <br>    <div class="row">
+        <h5 style="padding-left: 35px; color: yellow;">GOT A PROJECT IN MIND?</h5>
+        <h2 style="padding-left: 35px;">Let’s make something great
+         work together.</h2>                               
+          
+        
+      <br><br><br> <div class="col-3">
+       <img src="logo2.png" alt="">
+       <br><br><br>
+       <p style="font-size: 14px; padding-left: 10px;">&copy; 2024 proelementcreatives</p>
+       </div>
+       <div class="col-3">
+        <ul style="list-style-type: none; padding: 0;">
+            <li><a href="#" style="color: white; text-decoration: none;">About</a></li>
+            <li><a href="#" style="color: white; text-decoration: none;">Services</a></li>
+            <li><a href="#" style="color: white; text-decoration: none;">Work</a></li>
+            <li><a href="#" style="color: white; text-decoration: none;">Careers</a></li>
+            <li><a href="#" style="color: white; text-decoration: none;">Blog</a></li>
+            <li><a href="#" style="color: white; text-decoration: none;">Contact</a></li>
+        </ul>
+       </div>
+       <div class="col-3">
+        <ul style="list-style-type: none; padding: 0;">
+            <li style="color: white;">Graphic Designing</li>
+            <li style="color: white;">Web Development</li>
+            <li style="color: white;">Social Media Promotion</li>
+            <li style="color: white;">Branding</li>
+            <li style="color: white;">Package Designing</li>
+            <li style="color: white;">E-Commerce Development</li>
+            <li style="color: white;">UI/UX Design</li>
+        </ul>
+       </div>
+       <div class="col-3">
+        <div>
+            <p>Kinfra Techno Industrial Park</p>
+            <p>Kakkanchery, Thenhipalam – PO</p>
+            <p>Malappuram</p>
+            <a href="mailto:info@proelementcreatives.com" style="color: white; text-decoration: none;">info@proelementcreatives.com</a>
+            <p>(+91) 7907173719</p>
+        </div>
+    </div>
+</div>
+       </div>
+
+</div><br>
+    
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>
